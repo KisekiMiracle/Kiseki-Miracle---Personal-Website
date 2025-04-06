@@ -11,8 +11,15 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.3",
+    "@astrojs/react": "^4.2.3",
     "@tailwindcss/vite": "^4.0.15",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1",
     "astro": "^5.5.4",
+    "astro-icon": "^1.1.5",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "rehype-external-links": "^3.0.0",
     "rehype-format": "^5.0.1",
     "rehype-raw": "^7.0.0",
     "rehype-stringify": "^10.0.1",
@@ -27,6 +34,7 @@
     "unified": "^11.0.5"
   },
   "devDependencies": {
+    "@iconify-json/material-symbols-light": "^1.2.17",
     "@tailwindcss/typography": "^0.5.16",
     "wrangler": "^4.4.0"
   }
