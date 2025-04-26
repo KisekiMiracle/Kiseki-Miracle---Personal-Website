@@ -4,96 +4,102 @@ import "../styles/global.css";
 const { frontmatter, headings } = Astro.props;
 
 const depthClasses = {
-  2: 'ml-0',   // h2
-  3: 'ml-4',   // h3
-  4: 'ml-8',   // h4
-  5: 'ml-12',  // h5
-  6: 'ml-16'   // h6
+  2: "ml-0", // h2
+  3: "ml-4", // h3
+  4: "ml-8", // h4
+  5: "ml-12", // h5
+  6: "ml-16", // h6
 };
-
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{ frontmatter.title }</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{frontmatter.title}</title>
+  </head>
+  <body>
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        aside a.active {
-            color: #3b82f6;
-            font-weight: 600;
-        }
-        aside a.active::before {
-            background-color: #3b82f6;
-        }
+      html {
+        scroll-behavior: smooth;
+      }
+      aside a.active {
+        color: #3b82f6;
+        font-weight: 600;
+      }
+      aside a.active::before {
+        background-color: #3b82f6;
+      }
     </style>
     <script is:inline>
-        document.addEventListener('DOMContentLoaded', () => {
-            const tocLinks = document.querySelectorAll('aside a');
-            const headings = document.querySelectorAll('h2, h3, h4, h5, h6');
+      document.addEventListener("DOMContentLoaded", () => {
+        const tocLinks = document.querySelectorAll("aside a");
+        const headings = document.querySelectorAll("h2, h3, h4, h5, h6");
 
-            // Clear existing active classes
-            tocLinks.forEach(link => link.classList.remove('active'));
+        // Clear existing active classes
+        tocLinks.forEach((link) => link.classList.remove("active"));
 
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach(entry => {
-                        const id = entry.target.id;
-                        const tocLink = document.querySelector(`aside a[href="#${id}"]`);
-                        
-                        if (entry.isIntersecting) {
-                            tocLinks.forEach(link => link.classList.remove('active'));
-                            tocLink?.classList.add('active');
-                        }
-                    });
-                }, 
-                { 
-                    rootMargin: '0px 0px -75% 0px',  // Adjusted values
-                    threshold: 0.2
-                }
-            );
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const id = entry.target.id;
+              const tocLink = document.querySelector(`aside a[href="#${id}"]`);
 
-            headings.forEach(heading => {
-                if (heading.id) {
-                    observer.observe(heading);
-                }
+              if (entry.isIntersecting) {
+                tocLinks.forEach((link) => link.classList.remove("active"));
+                tocLink?.classList.add("active");
+              }
             });
+          },
+          {
+            rootMargin: "0px 0px -75% 0px", // Adjusted values
+            threshold: 0.2,
+          }
+        );
+
+        headings.forEach((heading) => {
+          if (heading.id) {
+            observer.observe(heading);
+          }
         });
+      });
     </script>
     <main class="bg-gradient-to-r from-violet-200 to-pink-200 py-16 not-odd:flex
                  flex flex-row gap-2 justify-center">
-        <section class="w-full py-12 flex flex-col items-center bg-white shadow-xl
+      <section
+        class="w-full py-12 flex flex-col items-center bg-white shadow-xl
                       shadow-slate-700/10 ring-1 ring-gray-900/5
-                        px-14 md:max-w-3xl rounded-lg">
-            <div class="my-8 prose prose-slate mx-auto lg:prose-lg
+                        px-14 md:max-w-3xl rounded-lg"
+      >
+        <div class="my-8 prose prose-slate mx-auto lg:prose-lg
                         prose-a:text-blue-600 prose-a:hover:text-blue-500">
-                <slot />
-            </div>
-        </section>
-        <aside class="h-screen sticky top-4 ml-8 hidden lg:block min-w-[240px]">
-            <ul class="flex flex-col gap-2 text-sm px-8 py-4 bg-gray-50 rounded-lg">
-                {headings.map((data: { text: string; slug: string, depth: number }) => (
-                    (data.depth !== 1) ?
-                    <li class={depthClasses[data.depth as keyof typeof depthClasses] || 'ml-0'}>
-                        <a  href={`#${data.slug}`}
-                            class="text-gray-600 hover:text-blue-500 transition-colors
+          <slot />
+        </div>
+      </section>
+      <aside class="h-screen sticky top-4 ml-8 hidden lg:block min-w-[240px]">
+        <ul class="flex flex-col gap-2 text-sm px-8 py-4 bg-gray-50 rounded-lg">
+          {
+            headings.map((data: { text: string; slug: string; depth: number }) =>
+              data.depth !== 1 ? (
+                <li class={depthClasses[data.depth as keyof typeof depthClasses] || "ml-0"}>
+                  <a
+                    href={`#${data.slug}`}
+                    class="text-gray-600 hover:text-blue-500 transition-colors
                                    active:text-blue-600 active:font-semibold
                                    relative before:absolute before:-left-3
                                    before:top-1/2 before:h-2 before:w-2
                                    before:-translate-y-1/2 before:rounded-full
-                                   before:bg-transparent before:transition-colors">
-                            {data.text}
-                        </a>
-                    </li> : <></>
-                ))}
-            </ul>
-        </aside>
+                                   before:bg-transparent before:transition-colors"
+                  >
+                    {data.text}
+                  </a>
+                </li>
+              ) : null
+            )
+          }
+        </ul>
+      </aside>
     </main>
-</body>
+  </body>
 </html>
