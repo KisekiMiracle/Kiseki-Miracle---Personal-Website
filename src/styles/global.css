@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-@plugin "@iconify/tailwind4";
+@plugin "@iconify/tailwind4" {
+  prefixes: fa-solid, mdi, ix;
+}
 
 iconify-icon {
   display: inline-block;
