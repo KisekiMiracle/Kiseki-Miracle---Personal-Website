@@ -1,0 +1,58 @@
+---
+import { ClientRouter } from "astro:transitions";
+import AnimatedWavesSections from "../components/Animated/AnimatedWavesSections.astro";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+interface Props {
+  title: string;
+  description: string;
+  heading?: string;
+  subheading?: string;
+  helper?: string;
+}
+
+const { title, description, heading = "Kiseki Miracle", subheading = "奇跡", helper = "自己紹介" } = Astro.props;
+const newTitle = `${SITE_TITLE} | ${title}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={newTitle} description={description} />
+    <ClientRouter />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <Header />
+    <section class="bg-transparent h-[60svh] text-white flex flex-col items-center justify-center relative">
+      <div class="fixed flex flex-col items-center justify-center gap-4">
+        <h1 class="text-7xl text-center font-[Fredericka_the_Great]">{heading}</h1>
+        <p class="text-4xl">{subheading}</p>
+        <p class="font-normal text-md">= {helper} =</p>
+      </div>
+      <div class="fixed w-full h-[70svh] bg-zinc-800 -z-1"></div>
+      <AnimatedWavesSections />
+    </section>
+
+    <main class="flex flex-col items-center w-full py-12 bg-white z-1">
+      <section class="p-12 shadow-sm">
+        <span
+          class="flex items-center py-3 text-2xl !text-gray-300 before:flex-1 before:border-t before:border-gray-300 before:me-6 after:flex-1 after:border-t after:border-gray-300 after:ms-6 dark:text-white dark:before:border-neutral-300 dark:after:border-neutral-300"
+        >
+          奇跡
+        </span>
+
+        <slot />
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

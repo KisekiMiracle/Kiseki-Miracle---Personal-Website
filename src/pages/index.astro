@@ -1,7 +1,10 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Layout from "../layouts/Layout.astro";
+
+const title = "Home";
+const description = "Welcome to my website";
 ---
 
-<BaseLayout>
-    Hi! I'm Kiseki. Please to meet ya!
-</BaseLayout>
+<Layout title={title} description={description}>
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias sequi, veritatis incidunt deleniti voluptate deserunt non repellendus, labore...</p>
+</Layout>
