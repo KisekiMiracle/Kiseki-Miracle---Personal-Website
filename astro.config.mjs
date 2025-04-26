@@ -10,7 +10,7 @@ import remarkToc from "remark-toc";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://kiseki-miracle.dev",
   integrations: [mdx(), react(), sitemap(), icon()],
 
   vite: {
