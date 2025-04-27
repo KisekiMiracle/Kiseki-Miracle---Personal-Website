@@ -16,6 +16,24 @@ interface Props {
 
 const { title, description, heading = "Kiseki Miracle", subheading = "奇跡", helper = "自己紹介" } = Astro.props;
 const newTitle = `${SITE_TITLE} | ${title}`;
+
+const anim = {
+  old: {
+    name: "fade-out-bottom",
+    duration: "200ms",
+  },
+  new: {
+    name: "fade-in-top",
+    duration: "500ms",
+    easing: "ease-out",
+    delay: "200ms",
+  },
+};
+
+const customTransition = {
+  forwards: anim,
+  backwards: anim,
+};
 ---
 
 <!doctype html>
@@ -23,16 +41,40 @@ const newTitle = `${SITE_TITLE} | ${title}`;
   <head>
     <BaseHead title={newTitle} description={description} />
     <ClientRouter />
-    <style>
+    <style is:global>
       html {
         scroll-behavior: smooth;
+      }
+
+      @keyframes fade-in-top {
+        0% {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fade-out-bottom {
+        0% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        100% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
       }
     </style>
   </head>
   <body class="flex flex-col min-h-screen">
     <Header />
     <section class="bg-transparent h-[60svh] text-white flex flex-col items-center justify-center relative">
-      <div class="fixed flex flex-col items-center justify-center gap-4">
+      <div class="fixed flex flex-col items-center justify-center gap-4 w-full" transition:animate={customTransition}>
         <h1 class="text-7xl text-center font-[Fredericka_the_Great]">{heading}</h1>
         <p class="text-4xl">{subheading}</p>
         <p class="font-normal text-md">= {helper} =</p>
@@ -42,7 +84,7 @@ const newTitle = `${SITE_TITLE} | ${title}`;
     </section>
 
     <main class="flex flex-col items-center w-full py-12 bg-white z-1">
-      <section class="p-12 shadow-sm">
+      <section class="p-12">
         <span
           class="flex items-center py-3 text-2xl !text-gray-300 before:flex-1 before:border-t before:border-gray-300 before:me-6 after:flex-1 after:border-t after:border-gray-300 after:ms-6 dark:text-white dark:before:border-neutral-300 dark:after:border-neutral-300"
         >
