@@ -80,7 +80,7 @@ export function Header() {
 				className={cn(
 					"flex items-center justify-center fixed top-0 left-1/2 -translate-x-1/2 w-full isolate z-10",
 					isPastHero
-						? "bg-linear-65 from-indigo-200/80 via-green-50/80 to-pink-200/80  backdrop-blur-sm shadow-lg"
+						? "bg-linear-65 from-indigo-200/80 via-green-50/80 to-pink-200/80 backdrop-blur-sm shadow-lg"
 						: "",
 				)}
 			>
@@ -147,6 +147,7 @@ export function Header() {
 						className={cn(
 							"flex items-center gap-2",
 							isPastHero ? "mt-1.5" : "",
+							isOpen ? "hidden" : "",
 						)}
 					>
 						<a href="/">

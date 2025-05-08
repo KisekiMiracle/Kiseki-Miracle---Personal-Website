@@ -3,7 +3,7 @@ import { ClientRouter, fade } from "astro:transitions";
 import { Header } from "../components";
 import AnimatedWavesSections from "../components/Animated/AnimatedWavesSections.astro";
 import BaseHead from "../components/BaseHead.astro";
-import ProfileSidebar from "../components/Navigation/ProfileSidebar.tsx";
+import SidebarWrapper from "../components/Navigation/SidebarWrapper";
 import { OverlayWrapper } from "../components/utils/scrollbarOverlay.tsx";
 
 interface Props {
@@ -76,11 +76,11 @@ const customTransition = {
   <body class="bg-gradient-to-b from-slate-900 to-slate-800 text-white" data-overlayscrollbars-initialize>
     <Header client:load />
     <OverlayWrapper client:load>
-      <section class="bg-transparent h-[65svh] text-white flex flex-col items-center justify-center relative -z-1 pointer-events-none">
+      <section class="bg-transparent h-[60svh] text-white flex flex-col items-center justify-center relative -z-1 pointer-events-none">
         <div class="fixed flex flex-col -mt-12 items-center justify-center gap-4 w-full px-8" transition:animate={customTransition}>
-          <h1 class="text-5xl sm:text-6xl text-center font-[Fredericka_the_Great]">{heading}</h1>
-          <h2 class="text-2xl sm:text-4xl">{subheading}</h2>
-          <p class="font-normal text-md">= {helper} =</p>
+          <h1 class="text-5xl sm:text-7xl text-center font-[Fredericka_the_Great]">{heading}</h1>
+          <h2 class="text-2xl sm:text-5xl">{subheading}</h2>
+          <p class="font-normal text-md sm:text-xl">= {helper} =</p>
         </div>
         <div
           id="bg-cover"
@@ -95,12 +95,12 @@ const customTransition = {
         <AnimatedWavesSections />
       </section>
 
-      <main class="flex flex-col items-center w-full py-12 bg-violet-50 z-1 px-8 text-slate-800" transition:animate="fade">
+      <main class="flex flex-col items-center w-full py-12 bg-zinc-50 z-1 px-8 text-slate-800" transition:animate="fade">
         <section class="flex xl:gap-6 w-full max-w-7xl 2md:w-auto">
-          <ProfileSidebar client:load />
+          <SidebarWrapper client:load />
           <div class="w-full xl:max-w-5xl flex flex-col gap-4">
             <span
-              class="flex items-center py-3 text-2xl font-bold !text-violet-500 before:flex-1 before:border-t before:border-violet-400 before:me-6 after:flex-1 after:border-t after:border-violet-400 after:ms-6"
+              class="flex items-center py-3 text-2xl font-bold !text-zinc-400 before:flex-1 before:border-t before:border-zinc-300 before:me-6 after:flex-1 after:border-t after:border-zinc-300 after:ms-6"
             >
               奇跡
             </span>

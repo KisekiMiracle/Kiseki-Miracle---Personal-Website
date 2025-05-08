@@ -7,13 +7,13 @@ interface HeaderLinkProps extends HTMLAttributes<HTMLAnchorElement> {
 	scrolled?: boolean;
 }
 
-export function HeaderLink({
+export const HeaderLink = ({
 	href,
 	className,
 	scrolled,
 	children,
 	...props
-}: HeaderLinkProps) {
+}: HeaderLinkProps) => {
 	const [isActive, setIsActive] = useState(false);
 
 	useEffect(() => {
@@ -47,4 +47,4 @@ export function HeaderLink({
 			{children}
 		</a>
 	);
-}
+};

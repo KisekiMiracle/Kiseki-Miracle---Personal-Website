@@ -130,7 +130,7 @@ const horizontalCardVariants = cva(
 	{
 		variants: {
 			variant: {
-				primary: "bg-white text-gray-700 shadow-md border-gray-200 border",
+				primary: "bg-white text-gray-700 shadow-md ",
 			},
 		},
 		defaultVariants: {

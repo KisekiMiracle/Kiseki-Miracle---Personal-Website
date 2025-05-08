@@ -1,7 +1,12 @@
+import type { ComponentPropsWithoutRef } from "react";
 import { FocusOn } from "react-focus-on";
 import { useSidebarStore } from "../utils/store";
 
-export default function ProfileSidebar() {
+interface props extends ComponentPropsWithoutRef<"div"> {
+	className?: string;
+}
+
+export default function ProfileSidebar({ className, ...props }: props) {
 	const isOpen = useSidebarStore((state) => state.isOpen);
 	const toggleSidebar = useSidebarStore((state) => state.toggleSidebar);
 	const focusRef = useSidebarStore((state) => state.focusRef);
@@ -16,11 +21,12 @@ export default function ProfileSidebar() {
 				shards={focusRef ? [focusRef] : undefined}
 			>
 				<aside
-					className={`hidden xl:flex flex-col min-w-56 h-fit gap-4 items-center bg-white rounded-xl p-4 shadow-xs ${
+					className={`w-0 z-10 h-fit xl:flex flex-col xl:min-w-56 xl:gap-4 items-center bg-white rounded-xl xl:p-4 xl:shadow-sm ${
 						isOpen
-							? "fixed top-0 right-0 z-10 !flex !min-w-64 !min-h-screen isolate rounded-r-none"
+							? "fixed top-0 right-0 gap-4 p-4 !flex !min-w-64 !min-h-screen isolate rounded-r-none"
 							: ""
 					}`}
+					{...props}
 				>
 					<img
 						alt=""
@@ -45,13 +51,6 @@ export default function ProfileSidebar() {
 					</div>
 				</aside>
 			</FocusOn>
-			<div
-				className={`${
-					isOpen
-						? "fixed top-0 left-0 z-1 h-screen w-screen bg-black/50 backdrop-blur-sm"
-						: "hidden"
-				}`}
-			/>
 		</>
 	);
 }

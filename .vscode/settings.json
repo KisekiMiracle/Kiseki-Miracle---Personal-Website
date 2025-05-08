@@ -1,4 +1,5 @@
 {
   "editor.defaultColorDecorators": "always",
-  "tailwindCSS.experimental.configFile": "src/styles/global.css"
+  "tailwindCSS.experimental.configFile": "src/styles/global.css",
+  "editor.formatOnSave": true
 }
