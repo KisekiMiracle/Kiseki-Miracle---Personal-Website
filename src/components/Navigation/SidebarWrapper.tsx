@@ -29,9 +29,6 @@ export default function SidebarWrapper() {
 								visibility: "visible",
 							},
 						}}
-						onAnimationComplete={() => {
-							console.log("animation complete");
-						}}
 						className="h-fit items-center bg-white rounded-xl fixed top-0 right-0 z-10"
 					>
 						<ProfileSidebar />
