@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
 @import "tailwindcss";
+@import "overlayscrollbars/overlayscrollbars.css";
 @plugin "@tailwindcss/typography";
 @plugin "@iconify/tailwind4" {
-  prefixes: fa-solid, mdi, ix;
+  prefixes: fa-solid, mdi, ix, fa6-brands, fa-brands;
 }
 
 iconify-icon {
@@ -18,9 +19,24 @@ iconify-icon {
   --breakpoint-3xl: 120rem;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Mulish", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
+}
+
+.os-theme-custom {
+  --os-size: 8px;
+  --os-handle-bg: var(--color-blue-400);
+  --os-handle-bg-hover: var(--color-blue-600);
+  --os-handle-bg-active: var(--color-blue-500);
+  --os-handle-border-radius: 12px;
+  --os-track-bg: transparent;
+  --os-track-bg-hover: transparent;
+  --os-track-bg-active: transparent;
 }

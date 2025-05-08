@@ -1,9 +1,44 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import { BlogPostCard } from "../components";
+import Layout from "../layouts/MainLayout.astro";
 const title = "Home";
 const description = "Welcome to my website";
 ---
 
-<Layout title={title} description={description}>
-  <p>Test. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias sequi, veritatis incidunt deleniti voluptate deserunt non repellendus, labore...</p>
+<Layout
+  title={title}
+  description={description}
+  backgroundImageUrl="https://bucket.kiseki-miracle.dev/dialogue-ellie_zoom.gif"
+  classList="bg-contain saturate-100 brightness-30 !blur-sm"
+>
+  <div class="flex flex-col gap-4">
+    <BlogPostCard
+      title="Test"
+      description="Testing my own Blog. There may or not be some content here."
+      words={100}
+      minutes={1}
+      date={new Date().toLocaleDateString()}
+      category="Example Category"
+      image="https://bucket.kiseki-miracle.dev/wallpaper_marina_summer.png"
+    />
+
+    <BlogPostCard
+      title="Test"
+      description="Testing my own Blog. There may or not be some content here."
+      words={100}
+      minutes={1}
+      date={new Date().toLocaleDateString()}
+      category="Example Category"
+      image="https://bucket.kiseki-miracle.dev/wallpaper_marina_summer.png"
+    />
+
+    <BlogPostCard
+      title="Test"
+      description="Testing my own Blog. There may or not be some content here."
+      words={100}
+      minutes={1}
+      date={new Date().toLocaleDateString()}
+      category="Example Category"
+    />
+  </div>
 </Layout>

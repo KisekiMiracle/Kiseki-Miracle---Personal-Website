@@ -1,0 +1,36 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Minimal Autocomplete & Suggestion Clutter
+
+## Guiding Principles
+
+- Code suggestions should be minimal and non-intrusive.
+- Prioritize suggestions for:
+  - Recently used classes, components, variables, and functions.
+  - Auto-imports and import fixes.
+  - Quick fixes for malformed functions or signatures (e.g., via TAB).
+- Avoid generating unsolicited or speculative code completions, especially for:
+  - Unrelated classes or components.
+  - Nonfunctional or hallucinated logic.
+- The goal is to reduce visual clutter and keep the suggestion experience focused and relevant.
+
+## Implementation Notes
+
+- When configuring autocomplete or suggestion settings, prefer options that:
+  - Limit the number of suggestions shown.
+  - Bias toward recent and in-scope symbols.
+  - Suppress large, speculative, or unrelated code completions.
+- Auto-import and quick-fix features should remain enabled for productivity.
+- If possible, disable or minimize inline code suggestions that are not contextually relevant.
+
+## Example
+
+- ✅ Suggest: A variable, class, or function I just defined or used.
+- ✅ Suggest: Auto-import for a component I reference.
+- ✅ Suggest: Fix for a malformed function signature.
+- ❌ Do NOT suggest: Entire blocks of code for patterns I haven't started.
+- ❌ Do NOT suggest: Unrelated or hallucinated classes/components.
+

@@ -8,10 +8,12 @@ import icon from "astro-icon";
 import { defineConfig } from "astro/config";
 import remarkToc from "remark-toc";
 
+import robotsTxt from "astro-robots-txt";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://kiseki-miracle.dev",
-  integrations: [mdx(), react(), sitemap(), icon()],
+  integrations: [mdx(), react(), sitemap(), icon(), robotsTxt()],
 
   vite: {
     plugins: [

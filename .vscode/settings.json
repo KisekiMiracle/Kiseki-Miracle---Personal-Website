@@ -1,0 +1,4 @@
+{
+  "editor.defaultColorDecorators": "always",
+  "tailwindCSS.experimental.configFile": "src/styles/global.css"
+}
