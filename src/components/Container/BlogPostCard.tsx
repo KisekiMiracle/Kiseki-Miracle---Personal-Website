@@ -46,7 +46,7 @@ export function BlogPostCard({
 					<MetaItem icon="icon-[mdi--calendar-outline]" text={category} />
 				</div>
 				<p className="text-lg ">{description}</p>
-				<p className="text-sm text-gray-400">
+				<p className="text-sm text-neutral-400">
 					{words} Words | {minutes} Minutes
 				</p>
 				<MetaItem
@@ -56,25 +56,25 @@ export function BlogPostCard({
 				>
 					<>
 						<div className="flex items-center gap-1">
-							<span className="icon-[mdi--calendar-outline] text-gray-500" />
-							<p className="text-sm text-gray-500">{date}</p>
+							<span className="icon-[mdi--calendar-outline] text-neutral-500" />
+							<p className="text-sm text-neutral-500">{date}</p>
 						</div>
-						<span className="mx-2 text-gray-400">/</span>
+						<span className="mx-2 text-neutral-400">/</span>
 						<div className="flex items-center gap-1">
-							<span className="icon-[mdi--calendar-outline] text-gray-500" />
-							<p className="text-sm text-gray-500">{date}</p>
+							<span className="icon-[mdi--calendar-outline] text-neutral-500" />
+							<p className="text-sm text-neutral-500">{date}</p>
 						</div>
-						<span className="mx-2 text-gray-400">/</span>
+						<span className="mx-2 text-neutral-400">/</span>
 						<div className="flex items-center gap-1">
-							<span className="icon-[mdi--calendar-outline] text-gray-500" />
-							<p className="text-sm text-gray-500">{date}</p>
+							<span className="icon-[mdi--calendar-outline] text-neutral-500" />
+							<p className="text-sm text-neutral-500">{date}</p>
 						</div>
 					</>
 				</MetaItem>
 			</div>
 			{image ? (
 				<div className="relative w-full h-64 2md:h-72 2md:max-h-72 hover:cursor-pointer hover:[&>div]:w-full transition-all duration-150 overflow-hidden 2md:[clip-path:polygon(0%_0%,100%_0%,100%_100%,10%_100%)]">
-					<div className="absolute bg-gray-900/70 w-0 h-full z-10 transition-all duration-250 ease-in-out rounded-r-xl flex items-center justify-center">
+					<div className="absolute bg-neutral-900/70 w-0 h-full z-10 transition-all duration-250 ease-in-out rounded-r-xl flex items-center justify-center">
 						<span className="icon-[mdi--chevron-right] text-white text-8xl" />
 					</div>
 					<img
@@ -119,7 +119,7 @@ function MetaItem({
 			{moreThanText ? (
 				<>{children}</>
 			) : (
-				<p className="text-sm text-gray-500">{text}</p>
+				<p className="text-sm text-neutral-500">{text}</p>
 			)}
 		</div>
 	);
@@ -130,7 +130,7 @@ const horizontalCardVariants = cva(
 	{
 		variants: {
 			variant: {
-				primary: "bg-white text-gray-700 shadow-md ",
+				primary: "bg-white text-neutral-700 shadow-md ",
 			},
 		},
 		defaultVariants: {

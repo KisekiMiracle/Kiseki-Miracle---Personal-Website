@@ -1,8 +1,7 @@
 import { type RefObject, useEffect, useRef, useState } from "react";
 import { SITE_TITLE } from "../consts";
-import { BurgerButton } from "./Button/BurgerButton";
-import { Button } from "./Button/Button";
 import { HeaderLink } from "./HeaderLink";
+import { BurgerButton, Button } from "./index";
 import "iconify-icon";
 import { InFocusGuard } from "react-focus-on";
 import { cn } from "./utils/cn";
@@ -26,12 +25,12 @@ export function Header() {
 		const observer = new IntersectionObserver(
 			(entries) => {
 				const [entry] = entries;
-				setIsPastHero(!entry.isIntersecting);
+				if (entry.intersectionRatio > 0) setIsPastHero(!entry.isIntersecting);
 			},
 			{
 				root: null,
-				rootMargin: "-20px",
-				threshold: 0.1,
+				rootMargin: "0px",
+				threshold: 0.25,
 			},
 		);
 
@@ -79,15 +78,15 @@ export function Header() {
 				ref={ref}
 				className={cn(
 					"flex items-center justify-center fixed top-0 left-1/2 -translate-x-1/2 w-full isolate z-10",
-					isPastHero
-						? "bg-linear-65 from-indigo-200/80 via-green-50/80 to-pink-200/80 backdrop-blur-sm shadow-lg"
+					isPastHero && !isOpen
+						? "bg-linear-65 from-indigo-200/80 via-green-50/80 to-pink-200/80 backdrop-blur-sm shadow-lg shadow-zinc-200"
 						: "",
 				)}
 			>
 				<nav
 					className={cn(
 						"px-8 py-3 flex items-center justify-between max-w-7xl text-white grow transition-all duration-150",
-						isPastHero ? " !text-gray-800 pt-1.5 pb-3 shadow-lg" : "",
+						isPastHero ? " !text-gray-800 pt-1 pb-2" : "",
 					)}
 				>
 					<div className="flex items-center gap-8 text-md">
@@ -111,33 +110,15 @@ export function Header() {
 								!isOpen ? "visible" : "invisible",
 							)}
 						>
-							<HeaderLink
-								href="/"
-								scrolled={isPastHero}
-								className={
-									isPastHero ? "!text-gray-800 hover:!text-gray-800" : ""
-								}
-							>
-								<span className="icon-[fa-solid--home] hover:!text-gray-800" />
+							<HeaderLink href="/" scrolled={isPastHero}>
+								<span className="icon-[fa-solid--home]" />
 								Home
 							</HeaderLink>
-							<HeaderLink
-								href="/blog"
-								scrolled={isPastHero}
-								className={
-									isPastHero ? "!text-gray-800 hover:!text-gray-800" : ""
-								}
-							>
+							<HeaderLink href="/blog" scrolled={isPastHero}>
 								<span className="icon-[mdi--blog-outline]" />
 								Blog
 							</HeaderLink>
-							<HeaderLink
-								href="/about"
-								scrolled={isPastHero}
-								className={
-									isPastHero ? "!text-gray-800 hover:!text-gray-800" : ""
-								}
-							>
+							<HeaderLink href="/about" scrolled={isPastHero}>
 								<span className="icon-[ix--about]" />
 								About
 							</HeaderLink>

@@ -38,8 +38,13 @@ export const HeaderLink = ({
 				"hover:after:w-full",
 
 				// Active State (permanent border)
-				isActive ? "font-bold after:!w-full" : "text-white hover:text-white",
-				scrolled ? "after:!bg-gray-800 after:hover:!text-gray-800" : "",
+				isActive ? "font-bold after:!w-full" : "text-white",
+				scrolled && isActive
+					? "!text-indigo-600 after:!bg-indigo-600 !after:text-indigo-600 !font-extrabold"
+					: "",
+				scrolled && !isActive
+					? "!text-neutral-900 after:!bg-neutral-800 !after:text-neutral-800"
+					: "",
 				className,
 			].join(" ")}
 			{...props}

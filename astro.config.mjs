@@ -23,7 +23,7 @@ export default defineConfig({
         configureServer(server) {
           const { ws, watcher } = server;
           watcher.on("change", (file) => {
-            if (file.endsWith(".astro") || file.endsWith(".md") || file.endsWith(".mdx") || file.endsWith(".tsx")) {
+            if (file.endsWith(".astro") || file.endsWith(".md") || file.endsWith(".mdx") || file.endsWith(".tsx") || file.endsWith(".ts")) {
               ws.send({
                 type: "full-reload",
               });

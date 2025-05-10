@@ -28,6 +28,7 @@ export function BurgerButton({
 					"h-1 w-6 bg-white transition-transform",
 					isOpen ? "rotate-45 translate-y-2" : "",
 					isPastHero ? "!bg-gray-800" : "",
+					isPastHero && isOpen ? "!bg-white" : "",
 				)}
 			/>
 			<div
@@ -35,6 +36,7 @@ export function BurgerButton({
 					"h-1 w-6 bg-white transition-opacity",
 					isOpen ? "opacity-0" : "",
 					isPastHero ? "!bg-gray-800" : "",
+					isPastHero && isOpen ? "!bg-white" : "",
 				)}
 			/>
 			<div
@@ -42,6 +44,7 @@ export function BurgerButton({
 					"h-1 w-6 bg-white transition-transform",
 					isOpen ? "-rotate-45 -translate-y-2" : "",
 					isPastHero ? "!bg-gray-800" : "",
+					isPastHero && isOpen ? "!bg-white" : "",
 				)}
 			/>
 		</button>
